@@ -86,15 +86,15 @@ void can_com_task_handle(void)
 			printf("the CAN communication was initialized.\n\r");
 			break;
 		case CAN_RX_DATA:
-			if(data_buffer.temp_len + RxHeader.DLC <= DATA_BUFFER_SIZE)
+			if(data_buffer.temp_len + RxHeader.DLC <= SEND_BUFFER_SIZE)
 			{
 				memcpy(&data_buffer.temp_buffer[data_buffer.temp_len], CAN_Rx_Data, RxHeader.DLC);
 		    data_buffer.temp_len += RxHeader.DLC;
 				//printf("the data was loaded to tempbuffer as size %d.\n\r", data_buffer.temp_len);	
-        if(data_buffer.temp_len == DATA_BUFFER_SIZE)
+        if(data_buffer.temp_len == SEND_BUFFER_SIZE)
 				{
-					memcpy(data_buffer.send_buffer, data_buffer.temp_buffer, DATA_BUFFER_SIZE);
-					data_buffer.send_len = DATA_BUFFER_SIZE;
+					memcpy(data_buffer.send_buffer, data_buffer.temp_buffer, SEND_BUFFER_SIZE);
+					data_buffer.send_len = SEND_BUFFER_SIZE;
 					data_buffer.temp_len = 0;
 					data_buffer.is_ready = true;
 					
@@ -109,10 +109,10 @@ void can_com_task_handle(void)
 			}
 			else 
 			{
-				int temp_len = DATA_BUFFER_SIZE - data_buffer.temp_len;
+				int temp_len = SEND_BUFFER_SIZE - data_buffer.temp_len;
 				memcpy(&data_buffer.temp_buffer[data_buffer.temp_len], CAN_Rx_Data, temp_len);
-				memcpy(data_buffer.send_buffer, data_buffer.temp_buffer, DATA_BUFFER_SIZE);
-				data_buffer.send_len = DATA_BUFFER_SIZE;
+				memcpy(data_buffer.send_buffer, data_buffer.temp_buffer, SEND_BUFFER_SIZE);
+				data_buffer.send_len = SEND_BUFFER_SIZE;
 				data_buffer.is_ready = true;
 				
 			 #if SIM7600_MODE == 1

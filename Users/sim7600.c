@@ -20,7 +20,7 @@
 extern UART_HandleTypeDef huart4;
 extern Device_Status device_status;
 uint32_t sim7600_check_cnt = 0;
-char ATcommand[160];
+char ATcommand[256];
 char mobileNumber[] = "+8613655520565"; // have to exchange.
 
 char http_str1[] = "AT+HTTPPARA=\"URL\",";
