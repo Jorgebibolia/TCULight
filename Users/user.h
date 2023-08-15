@@ -22,7 +22,7 @@
 #define CAN_COM_ENABLE        HAL_GPIO_WritePin(CAN_STBY_GPIO_Port, CAN_STBY_Pin, GPIO_PIN_RESET);
 #define CAN_COM_DISABLE       HAL_GPIO_WritePin(CAN_STBY_GPIO_Port, CAN_STBY_Pin, GPIO_PIN_SET);
 
-#define DATA_BUFFER_SIZE             4096
+#define DATA_BUFFER_SIZE             128
 typedef struct _Device_Status
 {
 	uint8_t  sim7600;    /*!< Specifies the sim7600 status.                 0x00 ~ 0x7F*/                         
