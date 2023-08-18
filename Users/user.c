@@ -49,8 +49,13 @@ void can_com_initialize(void)
   */
 void user_btn_event(void)
 {
+#if SIM7600_MODE == 0
 	uint8_t can_send_data[8] = {0x01, 0x01, 0x03, 0x03, 0x03, 0x08, 0x09, 0x10};   /*to test*/
-  can_com_send_data(can_send_data, CAN_DAT_MAX_LENGTH);		
+  can_com_send_data(can_send_data, CAN_DAT_MAX_LENGTH);
+#elif SIM7600_MODE == 2	
+	device_status.sim7600 = SIM7600_MQTT;   /*to test*/
+  osSemaphoreRelease(sim7600_semaHandle);	/*to test*/
+#endif
 }
 /**
   * @brief  send the data through CAN BUS.
@@ -100,8 +105,10 @@ void can_com_task_handle(void)
 					
        #if SIM7600_MODE == 1
 	        device_status.sim7600 = SIM7600_HTTPS;
+       #elif SIM7600_MODE == 0 
+          device_status.sim7600 = SIM7600_SMS;
        #else
-          device_status.sim7600 = SIM7600_SMS;					
+          device_status.sim7600 = SIM7600_MQTT;					
        #endif				
           osSemaphoreRelease(sim7600_semaHandle);
           //printf("simtask was released.\n\r");					
@@ -117,8 +124,10 @@ void can_com_task_handle(void)
 				
 			 #if SIM7600_MODE == 1
 	        device_status.sim7600 = SIM7600_HTTPS;
-       #else
-          device_status.sim7600 = SIM7600_SMS;					
+       #elif SIM7600_MODE == 0 
+          device_status.sim7600 = SIM7600_SMS;
+       #else	
+          device_status.sim7600 = SIM7600_MQTT;				
        #endif	
 				osSemaphoreRelease(sim7600_semaHandle);
 				
@@ -182,7 +191,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	}	
 	printf("the data was received from CAN, data length is %d\n\r", RxHeader.DLC);	
 }
-
+uint8_t temp_data[5] = {0x30,};
 /**
   * @brief  sim7600 task handle.
   * @param  None 
@@ -200,6 +209,9 @@ void sim7600_task_handle(void)
 			break;
 		case SIM7600_SMS:
 			sim7600_set_sms_data(data_buffer.send_buffer, data_buffer.send_len);
+			break;
+		case SIM7600_MQTT:
+			sim7600_set_mqtt_data(temp_data, 0);
 			break;
 		default:
 			break;

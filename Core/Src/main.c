@@ -162,7 +162,7 @@ int main(void)
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
-	osSemaphoreAcquire(can_com_semaHandle, osWaitForever);	
+	osSemaphoreAcquire(can_com_semaHandle, osWaitForever);
   /* USER CODE END RTOS_QUEUES */
 
   /* Create the thread(s) */
@@ -190,7 +190,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */		
+    /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
 }

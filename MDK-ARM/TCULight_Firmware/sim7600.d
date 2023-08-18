@@ -37,3 +37,14 @@ tculight_firmware\sim7600.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_t
 tculight_firmware\sim7600.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
 tculight_firmware\sim7600.o: ../Core/Inc/main.h
 tculight_firmware\sim7600.o: ..\Users\user.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+tculight_firmware\sim7600.o: ../Core/Inc/FreeRTOSConfig.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+tculight_firmware\sim7600.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h

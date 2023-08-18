@@ -44,8 +44,10 @@ typedef enum {
 	SIM7600_OK      = 0, 
   SIM7600_ERR     = 1,	
 	SIM7600_CHECK   = 2,
-	SIM7600_HTTPS 	= 3,
-	SIM7600_SMS  	  = 4,  
+	SIM7600_MCHECK  = 3,
+	SIM7600_HTTPS 	= 4,
+	SIM7600_MQTT    = 5,
+	SIM7600_SMS  	  = 6,  
 } SIM7600_SATUS;
 
 typedef enum {
