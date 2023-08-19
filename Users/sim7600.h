@@ -43,6 +43,9 @@ void sim7600_state_check(void);
 void sim7600_set_sms_data(uint8_t *data, int data_len);
 void sim7600_config_https(void);
 void sim7600_set_https_data(uint8_t *data, int data_len);
+
+void sim7600_conn_mqtt_server(void);
+void sim7600_disconn_mqtt_server(void);
 void sim7600_set_mqtt_data(uint8_t *data, int data_len);	
 	
 #endif //_SIM7600_H_

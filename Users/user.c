@@ -191,7 +191,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	}	
 	printf("the data was received from CAN, data length is %d\n\r", RxHeader.DLC);	
 }
-uint8_t temp_data[5] = {0x30,};
 /**
   * @brief  sim7600 task handle.
   * @param  None 
@@ -211,7 +210,7 @@ void sim7600_task_handle(void)
 			sim7600_set_sms_data(data_buffer.send_buffer, data_buffer.send_len);
 			break;
 		case SIM7600_MQTT:
-			sim7600_set_mqtt_data(temp_data, 0);
+			sim7600_set_mqtt_data(data_buffer.send_buffer, data_buffer.send_len);
 			break;
 		default:
 			break;
